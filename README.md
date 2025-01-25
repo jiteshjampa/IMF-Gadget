@@ -77,7 +77,8 @@ The server will start on `http://localhost:5000`.
 ---
 
 ## 🧑‍💻 API Endpoints
-
+"For detailed information about the API endpoints and how to interact with them, please refer to the Postman API Documentation."
+https://imf-gadget.postman.co/workspace/1ae47405-a128-4ef2-8d6b-976447f0c66f/documentation/36484787-493a3cb1-94b3-4956-9a1e-4e987176ff02
 ### 1. **POST** `/login`
 - **Description**: Authenticate user and generate a JWT.
 - **Body**:
