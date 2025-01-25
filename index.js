@@ -13,7 +13,6 @@ app.use(express.json());
 // Database Connection
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
- 
 });
 
 const connectDB = async () => {

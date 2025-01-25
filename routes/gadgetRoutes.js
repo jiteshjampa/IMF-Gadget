@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { v4: uuidv4 } = require("uuid");
-const { Gadget } = require("../models/gadget.js"); // Updated to use Sequelize model
+const db = require("../models");
+const Gadget = db.Gadget; // Updated to use Sequelize model
 const authenticate = require("../middleware/auth"); // JWT Middleware
 
 // Generate random mission success probability
