@@ -8,17 +8,38 @@ const authenticate = require("../middleware/auth"); // JWT Middleware
 // Generate random mission success probability
 const getSuccessProbability = () => `${Math.floor(Math.random() * 100)}%`;
 
-// GET all gadgets (Public)
+// GET all gadgets or filter by status using query parameters
 router.get("/", async (req, res) => {
   try {
-    const gadgets = await Gadget.findAll();
+    const { status } = req.query; // Read status from query parameters
+
+    let filter = {};
+    if (status) {
+      // Validate status value
+      const validStatuses = [
+        "Available",
+        "Deployed",
+        "Destroyed",
+        "Decommissioned",
+      ];
+      if (!validStatuses.includes(status)) {
+        return res.status(400).json({ error: "Invalid status value" });
+      }
+      filter.status = status; // Apply filter if status is provided
+    }
+
+    // Fetch gadgets based on the filter
+    const gadgets = await Gadget.findAll({ where: filter });
+
+    // Add random success probability to each gadget
     const gadgetsWithProbability = gadgets.map((gadget) => ({
       ...gadget.toJSON(),
       successProbability: getSuccessProbability(),
     }));
-    console.log(gadgetsWithProbability);
+
     res.json(gadgetsWithProbability);
   } catch (error) {
+    console.error("Error fetching gadgets:", error);
     res.status(500).json({ error: "Failed to retrieve gadgets" });
   }
 });
