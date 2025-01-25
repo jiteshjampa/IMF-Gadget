@@ -1,5 +1,4 @@
 
-```markdown
 # IMF Gadget API
 
 🔹 **IMF Gadget API** is a backend service built using **Node.js**, **Express**, and **PostgreSQL** for managing gadgets in a high-stakes mission environment. The API allows for CRUD operations on gadgets, tracks their mission status, and integrates JWT-based authentication.
