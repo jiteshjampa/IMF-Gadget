@@ -13,13 +13,7 @@ app.use(express.json());
 // Database Connection
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
-  dialectOptions: {
-    ssl: {
-      require: true, // Important for Neon
-      rejectUnauthorized: false, // Needed to avoid SSL issues
-    },
-  },
-  logging: false,
+ 
 });
 
 const connectDB = async () => {
