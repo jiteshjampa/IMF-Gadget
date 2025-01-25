@@ -53,8 +53,11 @@ JWT_SECRET=your_jwt_secret
 PORT=5000
 ```
 
-### 4. Migrate the database
-
+### 4.Create and Migrate the database
+To create a model in Sequelize, you can use the following command:
+```bash
+npx sequelize-cli model:generate --name ModelName --attributes attribute1:type,attribute2:type
+```
 Run the Sequelize migrations to create the necessary tables in the database.
 
 ```bash
