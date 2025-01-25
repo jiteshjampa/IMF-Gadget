@@ -13,6 +13,13 @@ app.use(express.json());
 // Database Connection
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
   dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true, // Important for Neon
+      rejectUnauthorized: false, // Needed to avoid SSL issues
+    },
+  },
+  logging: false,
 });
 
 const connectDB = async () => {
@@ -46,10 +53,6 @@ app.get("/", (req, res) => {
 });
 
 // Start Server
-const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () =>
-  console.log(`🚀 Server running on port ${PORT}`)
-);
 
 // Graceful Shutdown
 process.on("SIGINT", async () => {
@@ -58,3 +61,4 @@ process.on("SIGINT", async () => {
   console.log("🔌 Database connection closed");
   process.exit(0);
 });
+module.exports = app;
