@@ -161,6 +161,46 @@ https://imf-gadget.postman.co/workspace/1ae47405-a128-4ef2-8d6b-976447f0c66f/doc
     "confirmationCode": 1234
   }
   ```
+  Here's the updated README section with the **status filter API** added as the 7th endpoint:  
+
+---
+
+### 7. **GET** `/gadgets?status={status}`  
+- **Description**: Retrieve gadgets filtered by their status.  
+- **Query Parameter**:  
+  - `status` (string) - The status of the gadget. Must be one of:  
+    - `"Available"`  
+    - `"Deployed"`  
+    - `"Destroyed"`  
+    - `"Decommissioned"`  
+- **Example Request**:  
+  ```
+  GET /gadgets?status=Deployed
+  ```
+- **Response**:  
+  ```json
+  [
+    {
+      "id": "some-uuid",
+      "name": "The Kraken",
+      "status": "Deployed",
+      "successProbability": "85%"
+    },
+    {
+      "id": "some-uuid-2",
+      "name": "The Nightingale",
+      "status": "Deployed",
+      "successProbability": "90%"
+    }
+  ]
+  ```
+- **Error Responses**:  
+  - `400 Bad Request`: If an invalid status is provided.  
+  - `500 Internal Server Error`: If there is an issue retrieving data.  
+
+---
+
+This ensures users can efficiently retrieve gadgets based on their mission status. You can now update your GitHub README with this section. 🚀 Let me know if you need any modifications!
 
 ---
 
